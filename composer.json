@@ -1,0 +1,22 @@
+{
+    "name": "andheiberg/asset",
+    "description": "Asset workflow for laravel using grunt.",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Andreas Peter Heiberg",
+            "email": "heibergandreas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.x",
+        "illuminate/filesystem": "4.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Andheiberg\\Asset": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
