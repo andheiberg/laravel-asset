@@ -13,7 +13,7 @@ Installation
 ---
 Run ```composer require andheiberg/laravel-asset:1.*```
 
-Add `'andheiberg\asset\AssetServiceProvider',` to `providers` in `app/config/app.php`
+Add `'Andheiberg\Asset\AssetServiceProvider',` to `providers` in `app/config/app.php`
 
 Run ```php artisan asset:setup```
 

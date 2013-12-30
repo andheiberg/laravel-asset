@@ -1,7 +1,8 @@
 {
     "name": "andheiberg/asset",
     "description": "Asset workflow for laravel using grunt.",
-    "version": "1.0",
+    "keywords": ["laravel", "asset", "grunt"],
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Andreas Peter Heiberg",
