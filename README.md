@@ -11,7 +11,7 @@ Gruntfile and asset helpers for laravel. This will:
 
 Installation
 ---
-Run ```composer require andheiberg/laravel-asset:1.*```
+Run ```composer require andheiberg/asset:1.*```
 
 Add `'Andheiberg\Asset\AssetServiceProvider',` to `providers` in `app/config/app.php`
 
