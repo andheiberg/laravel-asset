@@ -44,7 +44,17 @@ class Asset {
 	 */
 	public function css($asset)
 	{
-		$url = $this->url("/assets/css/{$asset}.css");
+		$base = '/assets/css';
+		$path = $base.'/'.str_replace('.', '/', $asset).'.css';
+		
+		if ($this->manager->has($path))
+		{
+			$url = $this->url($path);
+		}
+		else
+		{
+			$url = $this->url("{$base}/{$asset}.css");
+		}
 
 		return "<link rel=\"stylesheet\" href=\"{$url}\">";
 	}
@@ -57,7 +67,17 @@ class Asset {
 	 */
 	public function js($asset)
 	{
-		$url = $this->url("/assets/js/{$asset}.js");
+		$base = '/assets/js';
+		$path = $base.'/'.str_replace('.', '/', $asset).'.js';
+
+		if ($this->manager->has($path))
+		{
+			$url = $this->url($path);
+		}
+		else
+		{
+			$url = $this->url("{$base}/{$asset}.js");
+		}
 
 		return "<script src=\"{$url}\"></script>";
 	}
