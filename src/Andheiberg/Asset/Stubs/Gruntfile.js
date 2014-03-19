@@ -17,11 +17,23 @@ module.exports = function(grunt) {
 			},
 			js: {
 				source: '<%= options.base.source %>/js',
-				destination: '<%= options.base.destination %>/js'
+				destination: '<%= options.base.destination %>/js',
+				pages: {
+					source: '<%= options.js.source %>/pages',
+					destination: '<%= options.js.destination %>/pages'
+				}
 			},
 			scss: {
 				source: '<%= options.base.source %>/scss',
 				destination: '<%= options.base.destination %>/css'
+			},
+			images: {
+				source: '<%= options.base.source %>/images',
+				destination: '<%= options.base.destination %>/images'
+			},
+			fonts: {
+				source: '<%= options.base.source %>/fonts',
+				destination: '<%= options.base.destination %>/fonts'
 			}
 		},
 
@@ -30,14 +42,30 @@ module.exports = function(grunt) {
 		// Script
 		// ==================================
 
+		sync: {
+			images: {
+				files: [{
+					cwd: '<%= options.images.source %>',
+					src: '**',
+					dest: '<%= options.images.destination %>',
+				}]
+			},
+			fonts: {
+				files: [{
+					cwd: '<%= options.fonts.source %>',
+					src: '**',
+					dest: '<%= options.fonts.destination %>',
+				}]
+			}
+		},
+
 		// Clean build folder before replacement
-		clean: ['<%= options.base.destination %>'],
+		clean: ['<%= options.js.destination %>', '<%= options.scss.destination %>'],
 
 		// Compile SASS files
 		sass: {
 			options: {
-				lineNumbers: true,
-				sourcemap: true
+				lineNumbers: true
 			},
 			dist: {
 				files: [{
@@ -79,7 +107,14 @@ module.exports = function(grunt) {
 				src: '*.js',
 				dest: '<%= options.js.destination %>',
 				ext: '.js'
-			}
+			},
+			js_pages: {
+				expand: true,
+				cwd: '<%= options.js.pages.source %>',
+				src: '*.js',
+				dest: '<%= options.js.pages.destination %>',
+				ext: '.js'
+			},
 		},
 
 		// Javascript minification - uglify
@@ -95,6 +130,12 @@ module.exports = function(grunt) {
 					cwd: '<%= options.js.destination %>',
 					src: '*.js',
 					dest: '<%= options.js.destination %>'
+				},
+				{
+					expand: true,
+					cwd: '<%= options.js.pages.destination %>',
+					src: '*.js',
+					dest: '<%= options.js.pages.destination %>'
 				}]
 			}
 		},
@@ -185,10 +226,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-cachebuster');
 	grunt.loadNpmTasks('grunt-import');
+	grunt.loadNpmTasks('grunt-sync');
 	
 
 	// Register tasks
-	grunt.registerTask('default', ['clean', 'sass', 'import:js', 'cachebuster', 'watch']);
-	grunt.registerTask('build', ['clean', 'sass', 'autoprefixer', 'import:js', 'cssmin', 'uglify', 'cachebuster']);
-
+	grunt.registerTask('default', ['sync', 'clean', 'sass', 'autoprefixer', 'import:js', 'import:js_pages', 'cachebuster', 'watch']);
+	grunt.registerTask('build', ['sync', 'clean', 'sass', 'autoprefixer', 'import:js', 'import:js_pages', 'cssmin', 'uglify', 'cachebuster']);
+	
 };

@@ -28,6 +28,7 @@
 		"grunt-autoprefixer": "0.2.x",
 		"grunt-cachebuster": "~0.1.5",
 		"underscore": "~1.5.2",
-		"grunt-import": "~0.1.6"
+		"grunt-import": "~0.1.6",
+		"grunt-sync": "0.0.5"
 	}
 }
