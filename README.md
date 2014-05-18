@@ -1,12 +1,14 @@
 Asset
 ===
-Simple asset workflow for laravel using grunt and blade helpers.
+Simple asset workflow for laravel using gulp and blade helpers.
 
-Gruntfile and asset helpers for laravel. This will:
+Gulpfile and asset helpers for laravel. This will:
 - Compile scss (sass)
-- Allow you to concatinate js files with @import "relative/path/to/file.js"
+- Allow you to concatinate js files with browserify
 - Minify scss and js
 - Work with LiveReload
+- Add cachebusting cashes to each url
+- Minify images
 - Add artisan asset:watch and artisan asset:build
 
 Installation
