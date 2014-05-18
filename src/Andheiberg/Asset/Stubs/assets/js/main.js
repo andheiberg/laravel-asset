@@ -1,1 +1,1 @@
-@import "vendor/jquery.js"
+var $ = require('jquery')(window);

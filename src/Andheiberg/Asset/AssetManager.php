@@ -55,7 +55,26 @@ class AssetManager {
 			throw new NotFoundException;
 		}
 
-		return $this->manifest->$url;	
+		$hash = $this->manifest->$url;
+
+		$url = $this->addHashToUrl($url, $hash);
+
+		return $url;
+	}
+
+	/**
+	 * Add a hash to an url.
+	 *
+	 * @param  string  $url
+	 * @param  string  $hash
+	 * @return string
+	 */
+	public function addHashToUrl($url, $hash)
+	{	
+		// find position of the last dot -- where the extension starts
+		$extensionPosition = strrpos($url, '.');
+
+		return substr($url, 0, $extensionPosition) . $hash . substr($filename, $extensionPosition);
 	}
 
 }

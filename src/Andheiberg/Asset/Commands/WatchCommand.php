@@ -37,7 +37,7 @@ class WatchCommand extends Command {
 	 */
 	public function fire()
 	{
-		$stream = popen("grunt", "r");
+		$stream = popen("gulp", "r");
 
 		if (ob_get_level() == 0)
 		{

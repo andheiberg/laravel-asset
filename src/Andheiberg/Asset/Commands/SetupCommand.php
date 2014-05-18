@@ -99,21 +99,38 @@ class SetupCommand extends Command {
 	 */
 	public function createSetupFiles()
 	{
-		$gruntfile = base_path().'/Gruntfile.js';
-		$gruntfileStub = __DIR__.'/../Stubs/Gruntfile.js';
+		$gruntfile = base_path().'/gulpfile.js';
+		$gruntfileStub = __DIR__.'/../Stubs/gulpfile.js';
 
 		if ($this->filesystem->exists($gruntfile))
 		{
-			if ($this->confirm('"Gruntfile.js" already exists do you wish to overwrite it? [yes|no]'))
+			if ($this->confirm('"gulpfile.js" already exists do you wish to overwrite it? [yes|no]'))
 			{
 				$this->filesystem->copy($gruntfileStub, $gruntfile);
-				$this->info('Published "Gruntfile.js"');
+				$this->info('Published "gulpfile.js"');
 			}
 		}
 		else
 		{
 			$this->filesystem->copy($gruntfileStub, $gruntfile);
-			$this->info('Published "Gruntfile.js"');
+			$this->info('Published "gulpfile.js"');
+		}
+
+		$gruntfolder = base_path().'/gulp';
+		$gruntfolderStub = __DIR__.'/../Stubs/gulp';
+
+		if ($this->filesystem->exists($gruntfolder))
+		{
+			if ($this->confirm('"/gulp" already exists do you wish to overwrite it? [yes|no]'))
+			{
+				$this->filesystem->copyDirectory($gruntfolderStub, $gruntfolder);
+				$this->info('Created "/gulp"');
+			}
+		}
+		else
+		{
+			$this->filesystem->copyDirectory($gruntfolderStub, $gruntfolder);
+			$this->info('Created "/gulp"');
 		}
 
 		$package = base_path().'/package.json';

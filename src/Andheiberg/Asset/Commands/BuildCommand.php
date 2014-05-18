@@ -37,7 +37,7 @@ class BuildCommand extends Command {
 	 */
 	public function fire()
 	{
-		$stream = popen("grunt build", "r");
+		$stream = popen("gulp build", "r");
 
 		if (ob_get_level() == 0)
 		{

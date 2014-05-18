@@ -13,22 +13,40 @@
 		"type": "git",
 		"url": "git@github.com:AndreasHeiberg/boilerplate.git"
 	},
+	"browser": {
+		"underscore": "backbone/node_modules/underscore",
+		"plugin": "./src/javascript/vendor/jquery-plugin.js"
+	},
+	"browserify": {
+		"transform": [
+			"browserify-shim"
+		]
+	},
+	"browserify-shim": {
+		"plugin": {
+			"exports": "plugin",
+			"depends": [
+				"jquery:$"
+			]
+		}
+	},
+	"devDependencies": {
+		"browserify-shim": "~3.4.1",
+		"browserify": "~3.36.0",
+		"vinyl-source-stream": "~0.1.1",
+		"connect": "~2.14.3",
+		"gulp-browserify": "~0.5.0",
+		"gulp-changed": "~0.3.0",
+		"gulp-imagemin": "~0.5.0",
+		"gulp-livereload": "~1.5.0",
+		"gulp-notify": "~1.2.5",
+		"gulp-open": "~0.2.8",
+		"gulp": "~3.6.0",
+		"gulp-sass": "~0.7.1",
+		"gulp-autoprefixer": "~0.0.7",
+		"gulp-buster": "~0.2.1"
+	},
 	"dependencies": {
-		"grunt": "~0.4.2",
-		"grunt-notify": "~0.2.4",
-		"grunt-contrib-watch": "~0.5.3",
-		"grunt-contrib-livereload": "~0.1.2",
-		"grunt-contrib-clean": "~0.5.0",
-		"grunt-contrib-compress": "~0.5.2",
-		"grunt-contrib-concat": "~0.3.0",
-		"grunt-contrib-jshint": "~0.6.0",
-		"grunt-contrib-sass": "~0.4.1",
-		"grunt-contrib-cssmin": "~0.7.0",
-		"grunt-contrib-uglify": "~0.2.7",
-		"grunt-autoprefixer": "0.2.x",
-		"grunt-cachebuster": "~0.1.5",
-		"underscore": "~1.5.2",
-		"grunt-import": "~0.1.6",
-		"grunt-sync": "0.0.5"
+		"jquery": "~2.1.0"
 	}
 }
